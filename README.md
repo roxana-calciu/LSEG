@@ -6,7 +6,7 @@
 
 ## Inputs
 
-- `file` (required): File path.
+- `file_path` (required): File path.
 
 # Python Script
 - `read_file` - Reads the log file and returns a dictionary of lines.
