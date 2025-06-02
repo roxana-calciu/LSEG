@@ -1,0 +1,30 @@
+name: Logs Analyzer
+
+on:
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: 'File path'
+        required: true
+        default: 'logs.log'
+
+jobs:
+  Logs-Analyzer:
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5.6.0
+        with:
+          python-version: '3.11'
+
+      - name: Logs Analyzer
+        run: |
+          echo "Start analyzing the logs..."
+          python3 logs-pattern.py ${{ inputs.file_path }} | tee logs-output.txt
+      
+      
